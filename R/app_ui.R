@@ -9,8 +9,9 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
-      h1("ivihome")
+    navbarPage(
+     title = "ivihome",
+     tabPanel("Exploration", value =  mod_exploration_ui("exploration_1"))
     )
   )
 }

@@ -34,6 +34,8 @@ golem::set_golem_options()
 
 ## Install the required dev dependencies ----
 golem::install_dev_deps(force_install = TRUE)
+usethis::use_import_from("rlang", c(".data", ".env"))
+usethis::use_pipe()
 
 ## Create Common Files ----
 ## See ?usethis for more information

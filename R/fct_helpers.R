@@ -61,14 +61,18 @@ transform_units <- function(df, col) {
 
 #' Create a Slider Input for Categorical Data
 #'
-#' This function generates a slider input for categorical data stored in a data frame column.
+#' This function generates a slider input for categorical data stored in a data
+#' frame column.
 #'
 #' @param df A data frame containing the categorical data.
-#' @param col The name of the column in the data frame containing the categorical data.
+#' @param col The name of the column in the data frame containing the
+#'   categorical data.
 #' @param ns The namespace for the Shiny app.
-#' @param title The title to be displayed above the slider input. If NULL, the column name will be used.
+#' @param title The title to be displayed above the slider input. If NULL, the
+#'   column name will be used.
 #'
-#' @return A Shiny UI element containing a slider input for selecting categories.
+#' @return A Shiny UI element containing a slider input for selecting
+#'   categories.
 #' @noRd
 #' @examples
 #' # Assuming "data" is a data frame containing a column named "Category"
@@ -104,14 +108,18 @@ chr_sliderinput <- function(df, col, ns, title = NULL) {
 
 #' Create a Slider Range Input for Numeric Data
 #'
-#' This function generates a slider range input for numeric data stored in a data frame column.
+#' This function generates a slider range input for numeric data stored in a
+#' data frame column.
 #'
 #' @param df A data frame containing the numeric data.
-#' @param col The name of the column in the data frame containing the numeric data.
+#' @param col The name of the column in the data frame containing the numeric
+#'   data.
 #' @param ns The namespace for the Shiny app.
-#' @param title The title to be displayed above the slider range input. If NULL, the column name will be used.
+#' @param title The title to be displayed above the slider range input. If NULL,
+#'   the column name will be used.
 #'
-#' @return A Shiny UI element containing a slider range input for selecting numeric range.
+#' @return A Shiny UI element containing a slider range input for selecting
+#'   numeric range.
 #' @noRd
 #' @examples
 #' # Assuming "data" is a data frame containing a column named "Age"
@@ -147,5 +155,60 @@ num_sliderrange <- function(df, col, ns, title = NULL) {
     )
   )
 }
+
+#' Create a Sunburst Plot
+#'
+#' This function generates a sunburst plot using the Plotly library, based on
+#' the provided data frame and variables.
+#'
+#' @param df A data frame containing the data to be visualized.
+#' @param vars A character vector specifying the variables to use for generating
+#'   the sunburst plot.
+#' @param max_depth The maximum depth of the sunburst plot. Defaults to Inf (no
+#'   depth limit).
+#' @param opacity The opacity of the plot elements. Should be a value between 0
+#'   and 1.
+#' @param branchvalues The value to determine how the branches are computed.
+#'   Should be either "remainder" or "total".
+#'
+#' @return A Plotly sunburst plot.
+#' @seealso \code{\link{plot_ly}}, \code{\link{sunburst}}
+#' @export
+sunburst_plt <- function(df,
+                         vars,
+                         max_depth = Inf,
+                         opacity = 1,
+                         branchvalues = "total") {
+
+  if (!branchvalues %in% c("remainder", "total")) {
+    rlang::abort("branchvalues must be remainder or total!")
+  }
+
+  vars %>%
+    purrr::imap(~ {
+      vars[1:.y]
+    }) %>%
+    purrr::map_dfr( ~ {
+      df %>%
+        tidyr::unite(col = "ids", dplyr::all_of(.x), sep = "-") %>%
+        dplyr::select(ids) %>%
+        dplyr::count(ids, name = "count") %>%
+        dplyr::mutate(
+          labels = stringr::str_remove_all(ids, ".*-"),
+          parents = stringr::str_remove_all(ids, stringr::str_c("-", labels, "|", labels))
+        )
+    }) %>%
+    plotly::plot_ly(
+      ids = ~ ids,
+      labels = ~ labels,
+      parents = ~ parents,
+      values = ~ count,
+      type = 'sunburst',
+      maxdepth = max_depth,
+      opacity = opacity,
+      branchvalues = 'total'
+    )
+}
+
 
 

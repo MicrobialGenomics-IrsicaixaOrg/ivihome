@@ -76,13 +76,13 @@ mod_exploration_server <- function(id) {
     ns <- session$ns
 
     ## Fake data ----
-    # full_data <-
-    #   readRDS("inst/test_data/test_data.rds") %>%
-    #   dplyr::mutate(
-    #     birth_date = lubridate::ymd(birth_date),
-    #     age = lubridate::as.period(lubridate::interval(birth_date, lubridate::today()))@year,
-    #     preservation_media = "unspecified"
-    #   )
+    full_data <-
+      readRDS("inst/test_data/test_data.rds") %>%
+      dplyr::mutate(
+        birth_date = lubridate::ymd(birth_date),
+        age = lubridate::as.period(lubridate::interval(birth_date, lubridate::today()))@year,
+        preservation_media = "unspecified"
+      )
 
     ## Tabs titles ----
     output$projects_tab_title <- renderText({

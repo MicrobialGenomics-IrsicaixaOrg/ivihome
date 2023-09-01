@@ -11,6 +11,10 @@
 #### CURRENT FILE: DEV SCRIPT #####
 ###################################
 
+golem::add_css_file("main.css")
+
+
+
 # Engineering
 
 ## Dependencies ----

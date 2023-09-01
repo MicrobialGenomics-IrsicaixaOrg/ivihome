@@ -1,0 +1,257 @@
+/* =========================== */
+/*            HOME             */
+/* =========================== */
+
+/* Define custom CSS variables */
+:root {
+        --accent: #e8aa45;
+        --accent-hover: #cf912c;
+        --background: #f4f7f9;
+        --blue-dark: #0c87c6; #513ad3
+        --blue-darkest: #1f6b9a;
+        --blue-light: #daf0f6;
+        --blue-light38: rgba(218, 240, 246, .38);
+        --font-black: #202124;
+        --gray-dark: #666;
+        --gray-darkest: #333;
+        --gray-light: #ccc;
+        --gray-lightest: #eaeaea;
+        --gray-medium: #999;
+        --gray-pale: #f1f1f2;
+        --gray-search: #717272;
+        --highlight: rgba(255, 255, 0, .3);
+        --primary: #1c7cc7;
+        --primary-hover: #0866ae;
+        --secondary: #00d0f4;
+        --secondary-hover: #2dafd7;
+        --white: #fff;
+        --white-off: #f8f8f8;
+        --bg-dark: #e9c2c24a;
+        --yellow-dark: #f7d31f;
+        --red-dark: #ff212c;
+        --purple-dark: #aa2b8b;
+        --purple-light: #aa2b8b40;
+        --black: #000;
+        --black1: rgba(0, 0, 0, .01);
+        --black3: rgba(0, 0, 0, .03);
+        --black6: rgba(0, 0, 0, .06);
+        --black24: rgba(0, 0, 0, .24);
+        --black38:rgba(0, 0, 0, .38);
+    }
+
+.navbar.navbar-default {
+  background-color: var(--purple-dark) !important;
+}
+
+/* Styles for home header section */
+.home-header {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30vh;
+}
+
+.header-content {
+    text-align: center;
+    justify-content: center;
+    font-family: din-2014, sans-serif;
+
+    .header-title {
+        line-height: 50px;
+        font-size: 40px;
+        font-weight: 500;
+        text-align: center;
+        justify-content: center;
+        color: var(--purple-dark);
+    }
+
+    .header-text {
+        line-height: 40px;
+        color: var(--gray-dark);
+        font-size: 30px;
+        margin: 34px 0;
+    }
+}
+
+/* Styles for statistics box container */
+.stats-box-container {
+    background-color: var(--bg-dark);
+    margin-left: -23px;
+    margin-right: -23px;
+}
+
+.home-stats {
+    margin-right: clamp(1%, 5vw, 10%);
+    margin-left: clamp(1%, 5vw, 10%);
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    justify-content: center;
+    box-sizing: content-box;
+
+    .stats-box {
+        justify-content: center;
+    }
+}
+
+/* Reset box-sizing for all elements within home-stats */
+.home-stats *,
+.home-stats ::before,
+.home-stats ::after {
+    box-sizing: inherit;
+}
+
+/* Styles for project searcher container */
+.proj-searcher-container {
+    background: url(/www/bkg_1.jpg) 100%/cover no-repeat;
+    justify-content: center;
+    opacity: 0.6;
+    margin-left: -23px;
+    margin-right: -23px;
+}
+
+.home-searcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+
+    .title-searcher {
+        padding: 0 20px;
+        color: var(--purple-dark);
+    }
+
+    .shiny-input-container {
+        padding: 0 20px;
+    }
+}
+
+/* Styles for work plots section */
+.wp-plots {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    justify-content: center;
+}
+
+.wp-button {
+    padding: 10px 0;
+}
+
+.button-column {
+    display: grid;
+    align-content: center;
+}
+
+.plots-column {
+    .header-text {
+        line-height: 40px;
+        color: var(--gray-dark);
+        font-size: 28px;
+        margin: 34px 0;
+    }
+}
+
+/* Styles for description panel */
+.dp-description {
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-dark);
+}
+
+.dp-content {
+    text-align: center;
+    justify-content: center;
+    font-family: din-2014, sans-serif;
+    max-width: 800px;
+
+    .dp-title {
+        letter-spacing: 1.5px;
+        margin: 30px 0 0;
+        letter-spacing: .15px;
+        line-height: 40px;
+        text-transform: uppercase;
+    }
+
+    .dp-text {
+        font-family: din-2014, sans-serif;
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: .15px;
+        line-height: 40px;
+        margin: 30px 0 30px 0;
+    }
+}
+
+/* =========================== */
+/*            EXPLORE          */
+/* =========================== */
+
+/* Styles for filter pickers section */
+
+.explore-title {
+  line-height: 40px;
+  color: var(--gray-dark);
+  font-size: 30px;
+  font-family: din-2014, sans-serif;
+  margin-left: 5px;
+}
+
+.explore-picker-containter {
+  display: flex;
+  padding: 20px 0px;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 15px;
+
+  .btn-button-picker {
+    --bs-btn-bg: var(--withe);
+    --bs-btn-color: var(--purple-dark);
+    --bs-btn-border-color: var(--purple-dark);
+    --bs-btn-hover-bg: var(--purple-light);
+    --bs-btn-hover-color: var(--purple-dark);
+    --bs-btn-hover-border-color: var(--purple-dark);
+    --bs-btn-focus-shadow-rgb: 245,166,169;
+    --bs-btn-active-color: var(--purple-dark);
+    --bs-btn-active-bg: var(--purple-light);
+    --bs-btn-active-border-color: var(--purple-dark);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+  }
+}
+
+.explore-stat-containter {
+  padding: 20px 0px;
+
+  .explore-stat-val {
+    color: var(--purple-dark);
+    font-family: din-2014, sans-serif;
+    font-weight: bold;
+    margin: auto 2px auto 10px;
+  }
+
+  .explore-stat-lab {
+    color: #999999;
+    font-size: 90%;
+  }
+}
+
+.explore-nav-tab {
+  --bs-link-color: var(--purple-light);
+  --bs-link-hover-color: var(--purple-dark);
+  --bs-nav-link-padding-x: 1rem;
+  --bs-nav-link-padding-y: .5rem;
+  --bs-nav-link-color: var(--bs-link-color);
+  --bs-nav-link-hover-color: var(--bs-link-hover-color);
+  --bs-nav-link-disabled-color: #888;
+}
+
+
+
+
+
+
+
+
+
+

@@ -6,8 +6,7 @@ ADD ./mistralDP /srv/shiny-server
 RUN chmod -R +r /srv/shiny-server
 
 ## Install deps and packag
-RUN Rscript -e "BiocManager::install(update = TRUE, ask=FALSE)"
-RUN Rscript -e "devtools::install(dependencies=TRUE, build_vignettes=TRUE)"
+RUN Rscript -e "devtools::install('/srv/shiny-server', dependencies=TRUE, build_vignettes=TRUE)"
 
 ## Expose port
 EXPOSE 3838

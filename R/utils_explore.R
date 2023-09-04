@@ -83,7 +83,7 @@ num_sliderrange <- function(df, col, ns, title = NULL) {
     h6(title, align = "center"),
     shiny::hr(),
     shiny::br(),
-    shinyWidgets::setSliderColor(color = "#999999", sliderId = 1),
+    # shinyWidgets::setSliderColor(color = "#999999", sliderId = 1),
     sliderInput(
       inputId = ns(col),
       label = NULL,

@@ -1,4 +1,4 @@
-FROM rocker/shiny-verse:4
+FROM rocker/shiny-verse:latest
 
 ## copy repo
 RUN rm -rf /srv/shiny-server/*

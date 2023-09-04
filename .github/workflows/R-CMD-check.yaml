@@ -25,6 +25,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
+      run_docker: true
 
     steps:
       - uses: actions/checkout@v3
@@ -53,25 +54,19 @@ jobs:
     needs: R-CMD-check
     steps:
       - name: Checkout Repository
-        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true' && github.ref == 'refs/heads/devel'"
+        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true'"
         uses: actions/checkout@v3
 
-      - name: Register repo name
-        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true' && github.ref == 'refs/heads/devel'"
-        id: reg_repo_name
-        run: |
-          echo CONT_IMG_NAME=$(echo ${{ github.event.repository.name }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
-
       - name: Set up QEMU
-        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true' && github.ref == 'refs/heads/devel'"
+        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true'"
         uses: docker/setup-qemu-action@v2
 
       - name: Set up Docker Buildx
-        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true' && github.ref == 'refs/heads/devel'"
+        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true'"
         uses: docker/setup-buildx-action@v2
 
       - name: Login to Docker Hub
-        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true' && github.ref == 'refs/heads/devel'"
+        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true''"
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -85,11 +80,11 @@ jobs:
       ## https://seandavi.github.io/BuildABiocWorkshop/articles/HOWTO_BUILD_WORKSHOP.html.
 
       - name: Build and Push Docker
-        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true' && github.ref == 'refs/heads/devel' && success()"
+        if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true'"
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
           tags: >
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.CONT_IMG_NAME }}:latest,
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.CONT_IMG_NAME }}:devel
+            microbialgenomics/mistralDP:latest,
+            microbialgenomics/mistralDP:devel

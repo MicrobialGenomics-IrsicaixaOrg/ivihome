@@ -87,6 +87,8 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
+          file: ./mistralDP/Dockerfile
+          platforms: linux/386, linux/amd64
           push: true
           tags: >
             microbialgenomics/mistraldp:latest,

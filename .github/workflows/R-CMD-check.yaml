@@ -85,5 +85,5 @@ jobs:
           context: .
           push: true
           tags: >
-            microbialgenomics/mistralDP:latest,
-            microbialgenomics/mistralDP:devel
+            microbialgenomics/mistraldp:latest,
+            microbialgenomics/mistraldp:devel

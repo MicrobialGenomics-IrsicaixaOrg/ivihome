@@ -10,3 +10,5 @@ $run_dev.*
 ^CODE_OF_CONDUCT\.md$
 ^Dockerfile$
 ^\.github$
+^app\.R$
+^rsconnect$

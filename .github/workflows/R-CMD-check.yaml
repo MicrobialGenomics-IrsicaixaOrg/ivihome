@@ -55,6 +55,10 @@ jobs:
       - name: Checkout Repository
         if: "!contains(github.event.head_commit.message, '/nodocker')"
         uses: actions/checkout@v3
+        with:
+          repository: MicrobialGenomics-IrsicaixaOrg/mistralDP
+          ref: main
+          path: mistralDP
 
       - name: Set up QEMU
         if: "!contains(github.event.head_commit.message, '/nodocker')"

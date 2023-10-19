@@ -92,7 +92,7 @@ mod_home_ui <- function(id){
       column(
         width = 5,
         align = "center",
-        tags$img(class = "dp-imgage", src = "www/mistral_flow_1.png")
+        tags$img(class = "dp-image", src = "www/mistral_flow_1.png")
       )
     )
   )

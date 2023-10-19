@@ -2,7 +2,7 @@ FROM rocker/shiny-verse:latest
 
 ## copy repo
 RUN rm -rf /srv/shiny-server/*
-ADD ./mistralDP /srv/shiny-server
+ADD . /srv/shiny-server
 RUN chmod -R +r /srv/shiny-server
 
 ## Install deps and packag

@@ -86,7 +86,13 @@ mod_home_ui <- function(id){
           and provides OMIC's data related to HIV/AIDS, specifically HIV-1
           MISTRAL. Anyone can find data, or access MISTRAL tools and applications.
           "
-        ),
+        )
+      )),
+    fluidRow(
+      class = "dp-description",
+      tags$img(
+        class = "dp-img",
+        src = "www/mistral_flow_1.png",
       )
     )
   )
@@ -141,10 +147,23 @@ mod_home_server <- function(id){
     output$wp_6 <- renderUI({ wp_button("wp_6", "Work Package 6", ns) })
     output$wp_7 <- renderUI({ wp_button("wp_7", "Work Package 7", ns) })
 
+
+    ## Filter full_data ----
+    df <- reactiveValues(data = full_data)
+    observeEvent(input$wp_a, df$data <- full_data)
+    observeEvent(input$wp_1, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp1")))
+    observeEvent(input$wp_2, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp2")))
+    observeEvent(input$wp_3, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp3")))
+    observeEvent(input$wp_4, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp4")))
+    observeEvent(input$wp_5, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp5")))
+    observeEvent(input$wp_6, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp6")))
+    observeEvent(input$wp_7, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp7")))
+
+
     ## Summary Plots ----
     output$file_info <- plotly::renderPlotly({
       sunburst_plt(
-        full_data,
+        df$data,
         vars = c("sub_class", "type", "software_name", "content", "extension"),
         max_depth = 4,
         branchvalues = "remainder",
@@ -152,9 +171,10 @@ mod_home_server <- function(id){
       ) %>% plotly::config(displaylogo = FALSE)
     })
 
+
     output$donor_info <- plotly::renderPlotly({
       sunburst_plt(
-        dplyr::bind_rows(full_data, full_data %>% dplyr::mutate(project_id = "asdf")),
+        dplyr::bind_rows(df$data,  df$data %>% dplyr::mutate(project_id = "asdf")),
         vars = c("genus_specie", "disease", "gender", "sample_source"),
         max_depth = 3,
         branchvalues = "remainder",
@@ -164,7 +184,7 @@ mod_home_server <- function(id){
     })
 
     output$nfiles_info <- plotly::renderPlotly({
-      donors_by_exp_plt(full_data, "barplot_nfiles_info")
+      donors_by_exp_plt(df$data, "barplot_nfiles_info")
     })
 
     ## Reactivity Plots ----

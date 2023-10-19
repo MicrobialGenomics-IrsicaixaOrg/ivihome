@@ -158,7 +158,7 @@ pie_plt <- function(df,
         hoverinfo = 'text',
         text = ~ paste0(stringr::str_to_sentence(group_var), ": ", n, " Donors"),
         showlegend = FALSE,
-        hole = 0.5,
+        # hole = 0.5,
         title = stringr::str_to_sentence(title),
         source = source_id
       ) %>%

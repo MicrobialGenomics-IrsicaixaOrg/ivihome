@@ -20,7 +20,6 @@ Imports:
     glue,
     golem (>= 0.4.1),
     magrittr,
-    pkgload,
     plotly,
     purrr,
     rlang,

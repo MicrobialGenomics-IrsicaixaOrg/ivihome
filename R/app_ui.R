@@ -25,7 +25,16 @@ app_ui <- function(request) {
     bslib::page_navbar(
       fillable = FALSE,
       id = "main_page",
-      title = strong("ivihome"),
+      title = tags$a(
+        href = "http://ivihome.eu",
+        tags$img(
+          src = "www/mistral_dp_1.png",
+          title = "Example Image Link",
+          width = "200",
+          height = "50",
+          style = "padding: 0 20px;"
+        ), ""
+      ),
       theme = bslib::bs_theme(
         bootswatch = "minty",
         base_font = bslib::font_google("Arvo")

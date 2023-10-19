@@ -23,7 +23,12 @@ mod_explore_ui <- function(id){
       uiOutput(outputId = ns("file_picker"))
     )),
     fluidRow(uiOutput(outputId = ns("filter_stats"))),
-    # uiOutput(ns("pie_projects"), height = "100px"),
+    fluidRow(
+      plotly::plotlyOutput(outputId = ns("pie_projects"), width = "10%", height = "10%"),
+      plotly::plotlyOutput(outputId = ns("pie_genus"), width = "10%", height = "10%"),
+      plotly::plotlyOutput(outputId = ns("pie_gender"), width = "10%", height = "10%"),
+      plotly::plotlyOutput(outputId = ns("pie_source"), width = "10%", height = "10%")
+    ),
     bslib::navset_tab(
       bslib::nav_panel(
         class = "explore-nav-tab",
@@ -229,10 +234,8 @@ mod_explore_server <- function(id){
     ## Main Panel -- Pie charts ----
     output$pie_projects <- pie_plt(filtered_data(), "project_id", title = "Project")
     output$pie_genus <- pie_plt(filtered_data(), "genus_specie", title = "Specie")
-    output$pie_projects <- pie_plt(filtered_data(), "gender")
-    output$pie_projects <- pie_plt(filtered_data(), "sample_source", title = "Primary Site")
-
-
+    output$pie_gender <- pie_plt(filtered_data(), "gender")
+    output$pie_source <- pie_plt(filtered_data(), "sample_source", title = "Primary Site")
 
 
 

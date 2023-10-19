@@ -156,6 +156,13 @@
     justify-content: center;
     align-items: center;
     background-color: var(--bg-dark);
+    margin-left: -23px;
+    margin-right: -23px;
+}
+
+.dp-img {
+  max-width: 35%;
+  margin-top: -35px;
 }
 
 .dp-content {

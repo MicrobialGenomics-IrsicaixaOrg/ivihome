@@ -77,8 +77,9 @@ mod_home_ui <- function(id){
     ## Fifth Row - Data Portal Description
     fluidRow(
       class = "dp-description",
-      div(
+      column(width = 5, div(
         class = "dp-content",
+        align = "center",
         p(class = "dp-title", "WHAT IS THE MISTRAL DATA PORTAL?"),
         p(
           class = "dp-text",
@@ -88,11 +89,10 @@ mod_home_ui <- function(id){
           "
         )
       )),
-    fluidRow(
-      class = "dp-description",
-      tags$img(
-        class = "dp-img",
-        src = "www/mistral_flow_1.png",
+      column(
+        width = 5,
+        align = "center",
+        tags$img(class = "dp-img", src = "www/mistral_flow_1.png")
       )
     )
   )

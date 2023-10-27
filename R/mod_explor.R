@@ -12,7 +12,7 @@ mod_explor_ui <- function(id) {
   bslib::page_sidebar(
     ## Sidebar ----
     sidebar = bslib::sidebar(
-      width = "20%",
+      width = "25%",
       bg = "#fff",
       fg = "#aa2b8b",
       open = "desktop",

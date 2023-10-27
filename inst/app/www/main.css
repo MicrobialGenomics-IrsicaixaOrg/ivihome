@@ -189,8 +189,55 @@
 }
 
 /* =========================== */
+/*            EXPLOR          */
+/* =========================== */
+
+/* Styles for box-stats section */
+.explore-stats {
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    justify-content: space-around;
+    box-sizing: content-box;
+
+    .stats-box {
+        justify-content: center;
+    }
+}
+
+/* Reset box-sizing for all elements within explore-stats */
+.explore-stats *,
+.explore-stats ::before,
+.explore-stats ::after {
+    box-sizing: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================== */
 /*            EXPLORE          */
 /* =========================== */
+
+
 
 /* Styles for filter pickers section */
 

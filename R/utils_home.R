@@ -32,11 +32,12 @@ si_number <- function(x, digits = 3) {
 #' @param icon The icon to be displayed.
 #' @param icon_size The size of the icon.
 #' @param opacity The opacity of the icon.
+#' @param class Name of the class
 #'
 #' @return A tag containing the styled stat box.
 #'
 #' @export
-stat_box <- function(title, value, icon, icon_size = "4em", opacity = 0.8) {
+stat_box <- function(title, value, icon, icon_size = "4em", opacity = 0.8, class = "stats-box") {
   fixedRow(
     class = "stats-box",
     column(
@@ -125,6 +126,7 @@ sunburst_plt <- function(df,
 #' @param id The ID for the button input.
 #' @param lab The label for the button.
 #' @param ns The namespace for Shiny.
+#'
 #' @return A Shiny UI element representing the customized button.
 wp_button <- function(id, lab, ns) {
   div(

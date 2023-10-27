@@ -4,7 +4,14 @@
 \alias{stat_box}
 \title{stat_box function}
 \usage{
-stat_box(title, value, icon, icon_size = "4em", opacity = 0.8)
+stat_box(
+  title,
+  value,
+  icon,
+  icon_size = "4em",
+  opacity = 0.8,
+  class = "stats-box"
+)
 }
 \arguments{
 \item{title}{The title of the stat box.}
@@ -16,6 +23,8 @@ stat_box(title, value, icon, icon_size = "4em", opacity = 0.8)
 \item{icon_size}{The size of the icon.}
 
 \item{opacity}{The opacity of the icon.}
+
+\item{class}{Name of the class}
 }
 \value{
 A tag containing the styled stat box.

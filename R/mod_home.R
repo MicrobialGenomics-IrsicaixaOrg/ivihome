@@ -162,6 +162,7 @@ mod_home_server <- function(id){
 
     ## Summary Plots ----
     output$file_info <- plotly::renderPlotly({
+      req(df)
       sunburst_plt(
         df$data,
         vars = c("sub_class", "type", "software_name", "content", "extension"),
@@ -173,6 +174,7 @@ mod_home_server <- function(id){
 
 
     output$donor_info <- plotly::renderPlotly({
+      req(df)
       sunburst_plt(
         dplyr::bind_rows(df$data,  df$data %>% dplyr::mutate(project_id = "asdf")),
         vars = c("genus_specie", "disease", "gender", "sample_source"),
@@ -184,6 +186,7 @@ mod_home_server <- function(id){
     })
 
     output$nfiles_info <- plotly::renderPlotly({
+      req(df)
       donors_by_exp_plt(df$data, "barplot_nfiles_info")
     })
 

@@ -43,7 +43,47 @@
   background-color: var(--purple-dark) !important;
 }
 
+
+.header-box {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 20vh;
+
+    .header-title-1 {
+        color: var(--purple-dark);
+        font-size: 40px;
+        font-family: din-2014, sans-serif;
+    }
+}
+
+.sub-header-box {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 5vh;
+    margin: -20px auto 30px auto;
+
+    .header-title-2 {
+        color: var(--gray-dark);
+        font-size: 30px;
+        font-family: din-2014, sans-serif;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-title-1 {
+        font-size: 20px;
+    }
+    .header-title-2 {
+        font-size: 10px;
+    }
+}
+
 /* Styles for home header section */
+/*
 .home-header {
     justify-content: center;
     display: flex;
@@ -73,6 +113,7 @@
         margin: 34px 0;
     }
 }
+*/
 
 /* Styles for statistics box container */
 .stats-box-container {

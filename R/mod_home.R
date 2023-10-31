@@ -11,14 +11,15 @@ mod_home_ui <- function(id){
   ns <- NS(id)
   fluidPage(
     ## First Row - TITLE ----
-    fluidRow(
-      class = "home-header",
-      div(
-        class = "header-content",
-        h1(class = "header-title", "To decipher the role of the microbiome"),
-        h1(class = "header-title", "on HIV pathogenesis and cure"),
-        p(class = "header-text", "MISTRAL's generated, multi-omic, open data")
-      )
+    div(
+      class = "header-box",
+      h1(class = "header-title-1", "To decipher the role of the microbiome"),
+      h1(class = "header-title-1", "on HIV pathogenesis and cure")
+    ),
+
+    div(
+      class = "sub-header-box",
+      h2(class = "header-title-2", "MISTRAL's generated, multi-omic, open data")
     ),
 
     ## Second Row - BOX-STATS ----
@@ -113,9 +114,8 @@ mod_home_server <- function(id, parent){
       n_files <- full_data$file_id %>% unique() %>% length() %>% si_number()
       n_labs <- "10"
 
-      bslib::layout_columns(
+      fluidRow(
         class = "home-stats",
-        col_widths = c(2,2,2,2,2),
         column(2, stat_box("SAMPLES", n_samples, "vial")),
         column(2, stat_box("DONORS", n_donors, "user-group")),
         column(2, stat_box("PROJECTS", n_projects, "list-check")),

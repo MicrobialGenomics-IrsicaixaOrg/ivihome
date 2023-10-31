@@ -45,17 +45,25 @@ app_ui <- function(request) {
         icon = bsicons::bs_icon("house-fill", size = "1em"),
         mod_home_ui("home_1")
       ),
-      bslib::nav_panel(
-        value = "explore_tab",
-        title = "Explore",
-        icon = bsicons::bs_icon("bar-chart-line-fill", size = "1em"),
-        mod_explore_ui("explore_1")
-      ),
+      # bslib::nav_panel(
+      #   value = "explore_tab",
+      #   title = "Explore",
+      #   icon = bsicons::bs_icon("bar-chart-line-fill", size = "1em"),
+      #   mod_explore_ui("explore_1")
+      # ),
       bslib::nav_panel(
         value = "explore_tab",
         title = "Explore",
         icon = bsicons::bs_icon("bar-chart-line-fill", size = "1em"),
         mod_explor_ui("explor_1")
+      ),
+      bslib::nav_panel_hidden(
+        value = "tab_ADZ4",
+        mod_project_adv4_ui("project_adv4_1")
+      ),
+      bslib::nav_panel_hidden(
+        value = "tab_ADZ2",
+        "ADZ2 tab"
       ),
       bslib::nav_spacer(),
       bslib::nav_item(link_twitter),

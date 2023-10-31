@@ -58,7 +58,7 @@ mod_explore_ui <- function(id){
 #' explore Server Functions
 #'
 #' @noRd
-mod_explore_server <- function(id){
+mod_explore_server <- function(id, parent){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
 

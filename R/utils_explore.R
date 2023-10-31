@@ -346,3 +346,36 @@ custom_dt <- function(df) {
     ) %>%
     DT::formatStyle(columns = colnames(.), fontSize = '25%')
 }
+
+#' Add Action Button to a Column in a Data Frame
+#'
+#' This function adds an action button to a specified column in a data frame.
+#' The action button is created using Shiny's actionButton function.
+#'
+#' @param df A data frame to which the action button will be added.
+#' @param col A character string specifying the column to which the action
+#'   button will be added.
+#' @param ns A shiny namespace object, usually from `ns <- NS(id)`.
+#' @param inputId A character string specifying the input ID that will be used
+#'   in Shiny's onInputChange function.
+#'
+#' @return A data frame with the specified column replaced by action buttons.
+#' @export
+acctionbutton_col <- function(df, col, ns, inputId) {
+  df %>%
+    dplyr::pull(!!col) %>%
+    purrr::map_dfr( ~ {
+      f_df <- dplyr::filter(df, project_id == .x)
+      f_df[col] <- actionButton(
+        class = "project_button",
+        inputId = ns(paste0("button_", f_df[[col]])),
+        label = f_df[[col]],
+        onclick = paste0('Shiny.onInputChange(\"', ns(inputId), '\", this.id)')
+      ) %>% as.character()
+
+      f_df
+    })
+}
+
+
+

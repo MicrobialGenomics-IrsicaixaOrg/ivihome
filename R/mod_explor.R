@@ -24,7 +24,7 @@ mod_explor_ui <- function(id) {
       )
     ),
 
-    ## Main -----
+    ## Main ----
 
     ### Stats-boxes ----
     bslib::accordion(
@@ -34,7 +34,6 @@ mod_explor_ui <- function(id) {
         uiOutput(outputId = ns("stat_boxs"))
       )
     ),
-    # verbatimTextOutput(outputId = ns("click_info")),  # Añade esto
 
     ### Plots ----
     bslib::accordion(
@@ -50,7 +49,6 @@ mod_explor_ui <- function(id) {
         )
       )
     ),
-
 
     ### Tables ----
     bslib::navset_card_underline(
@@ -79,7 +77,7 @@ mod_explor_ui <- function(id) {
 #' explor Server Functions
 #'
 #' @noRd
-mod_explor_server <- function(id){
+mod_explor_server <- function(id, parent){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
 
@@ -144,61 +142,54 @@ mod_explor_server <- function(id){
 
     ### Stat boxs ----
     output$stat_boxs <- renderUI({
+      ## Values
       n_samples <-
-        full_data %>%
-        dplyr::distinct(aliquot_id) %>%
+        dplyr::distinct(full_data, aliquot_id) %>%
         nrow() %>%
         si_number()
 
       n_donors <-
-        full_data %>%
-        dplyr::distinct(patient_id) %>%
+        dplyr::distinct(full_data, patient_id) %>%
         nrow() %>%
         si_number()
 
       n_files <-
-        full_data %>%
-        dplyr::distinct(file_id) %>%
+        dplyr::distinct(full_data, file_id) %>%
         dplyr::summarise(file_id = dplyr::n()) %>%
         dplyr::pull(file_id) %>%
         si_number()
 
       f_size <-
-        full_data %>%
-        dplyr::summarise(size = sum(size)) %>%
+        dplyr::summarise(full_data, size = sum(size)) %>%
         transform_units(col = "size")
 
+      ## Boxes
       bslib::layout_columns(
         col_widths = c(3, 3, 3, 3),
-        # height = "125px",
         bslib::value_box(
           title = "SAMPLES",
-          value = 10,
-          showcase = shiny::icon("vial"),
-          # showcase_layout = "top right"
+          value = n_samples,
+          showcase = shiny::icon("vial")
         ),
         bslib::value_box(
           title = "DONORS",
           value = n_donors,
-          showcase = shiny::icon("user-group"),
-          # showcase_layout = "top right"
+          showcase = shiny::icon("user-group")
         ),
         bslib::value_box(
           title = "FILES",
           value = n_files,
-          showcase = shiny::icon("list-check"),
-          # showcase_layout = "top right"
+          showcase = shiny::icon("list-check")
         ),
         bslib::value_box(
           title = "SIZE",
           value = f_size,
-          showcase = shiny::icon("database"),
-          # showcase_layout = "top right"
+          showcase = shiny::icon("database")
         )
       )
     })
 
-    ## Plots ----
+    ### Pies Plots ----
     output$pie_projects <- pie_plt_2(
       full_data,
       group_var = "project_id",
@@ -231,14 +222,12 @@ mod_explor_server <- function(id){
       click_id = "source_click"
     )
 
-
+    ### Pie Plots Reactivity ----
     output$click_info <- renderPrint({
       print(c(input$project_click, input$genus_click, input$gender_click, input$source_click))
     })
 
-    ## Main Panel -- Print Tables ----
-
-    ## Tabs titles ----
+    ### Tabs titles ----
     output$projects_tab_title <- renderText({
       txt <- "Projects"
       # if (exists("projects_df")) {
@@ -263,7 +252,7 @@ mod_explor_server <- function(id){
       txt
     })
 
-    ## Projects
+    ### Table Projects ----
     output$projects_formattable <- DT::renderDataTable({
       # req(filtered_data())
       full_data %>%
@@ -284,10 +273,20 @@ mod_explor_server <- function(id){
           dplyr::everything(),
           ~ unique(.x) %>% stringr::str_c(collapse = ", ")
         )) %>%
+        acctionbutton_col("project_id", ns, "sel_proj") %>%
         custom_dt()
     })
 
-    ### Samples ----
+    ### Table Projects Reactivity ----
+    observeEvent(input$sel_proj, {
+      bslib::nav_select(
+        id = "main_page",
+        selected = stringr::str_replace_all(input$sel_proj, ".*button_", "tab_"),
+        session = parent
+      )
+    })
+
+    ### Table Samples ----
     output$samples_formattable <- DT::renderDataTable({
       # req(filtered_data())
       full_data %>%
@@ -313,7 +312,7 @@ mod_explor_server <- function(id){
         custom_dt()
     })
 
-    ### Files
+    ### Table Files ----
     output$files_formattable <- DT::renderDataTable({
       # req(filtered_data())
       full_data %>%

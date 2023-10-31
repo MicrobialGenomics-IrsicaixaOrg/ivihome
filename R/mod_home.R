@@ -101,7 +101,7 @@ mod_home_ui <- function(id){
 #' home Server Functions
 #'
 #' @noRd
-mod_home_server <- function(id){
+mod_home_server <- function(id, parent){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
 
@@ -113,8 +113,9 @@ mod_home_server <- function(id){
       n_files <- full_data$file_id %>% unique() %>% length() %>% si_number()
       n_labs <- "10"
 
-      fluidRow(
+      bslib::layout_columns(
         class = "home-stats",
+        col_widths = c(2,2,2,2,2),
         column(2, stat_box("SAMPLES", n_samples, "vial")),
         column(2, stat_box("DONORS", n_donors, "user-group")),
         column(2, stat_box("PROJECTS", n_projects, "list-check")),

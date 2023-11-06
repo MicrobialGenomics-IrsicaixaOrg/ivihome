@@ -13,8 +13,10 @@ mod_home_ui <- function(id){
     ## First Row - TITLE ----
     div(
       class = "header-box",
-      h1(class = "header-title-1", "To decipher the role of the microbiome"),
-      h1(class = "header-title-1", "on HIV pathogenesis and cure")
+      h1(
+        class = "header-title-1",
+        "To decipher the role of the microbiome on HIV pathogenesis and cure"
+      ),
     ),
 
     div(
@@ -56,7 +58,7 @@ mod_home_ui <- function(id){
         class = "plots-column",
         fluidRow(
           style = "justify-content: center;",
-          p(class = "header-text", "WP1: Microbiome correlates of HIV-1 protection and control"),
+          uiOutput(outputId = ns("title_text")),
           column(
             width = 5,
             align = "center",
@@ -73,7 +75,6 @@ mod_home_ui <- function(id){
       )
     ),
 
-    htmlOutput(ns("clickDataOut")),
 
     ## Fifth Row - Data Portal Description
     fluidRow(
@@ -108,10 +109,11 @@ mod_home_server <- function(id, parent){
 
     ## Stat boxed ----
     output$stat_boxs <- renderUI({
-      n_samples <- full_data$aliquot_id %>% unique() %>% length() %>% si_number()
-      n_donors <- full_data$patient_id %>% unique() %>% length() %>% si_number()
-      n_projects <- full_data$project_id %>% unique() %>% length() %>% si_number()
-      n_files <- full_data$file_id %>% unique() %>% length() %>% si_number()
+      req(df)
+      n_samples <- df$data$aliquot_id %>% unique() %>% length() %>% si_number()
+      n_donors <- df$data$patient_id %>% unique() %>% length() %>% si_number()
+      n_projects <- df$data$project_id %>% unique() %>% length() %>% si_number()
+      n_files <- df$data$file_id %>% unique() %>% length() %>% si_number()
       n_labs <- "10"
 
       fluidRow(
@@ -150,16 +152,46 @@ mod_home_server <- function(id, parent){
 
 
     ## Filter full_data ----
-    df <- reactiveValues(data = full_data)
-    observeEvent(input$wp_a, df$data <- full_data)
-    observeEvent(input$wp_1, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp1")))
-    observeEvent(input$wp_2, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp2")))
-    observeEvent(input$wp_3, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp3")))
-    observeEvent(input$wp_4, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp4")))
-    observeEvent(input$wp_5, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp5")))
-    observeEvent(input$wp_6, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp6")))
-    observeEvent(input$wp_7, df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp7")))
+    df <- reactiveValues(data = full_data, title = "Complete Dataset of MISTRAL Project Work Packages")
+    observeEvent(input$wp_a, {
+      df$data <- full_data
+      df$title <- "Complete Dataset of MISTRAL Project Work Packages"
+    })
+    observeEvent(input$wp_1, {
+      df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp1"))
+      df$title <- "WP1: Microbiome correlates of HIV-1 protection and control"
+    })
+    observeEvent(input$wp_2, {
+      df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp2"))
+      df$title <- "WP2: Modulation of HIV-1 immunotherapy (HTI vaccine)"
+    })
+    observeEvent(input$wp_3, {
+      df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp3"))
+      df$title <- "WP3: HTI vaccine randomized clinical trial"
+    })
+    observeEvent(input$wp_4, {
+      df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp4"))
+      df$title <- "WP4: Gut microbiome correlates of serious AIDS/non-AIDS events"
+    })
+    observeEvent(input$wp_5, {
+      df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp5"))
+      df$title <- "WP5: Impact of antiretroviral therapy in the gut bacterial resistome"
+    })
+    observeEvent(input$wp_6, {
+      df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp6"))
+      df$title <- "WP6: Randomized clinical trials of interventions to modulate the gut microbiome in HIV-1 infected adults"
+    })
+    observeEvent(input$wp_7, {
+      df$data <- dplyr::filter(full_data, stringr::str_detect(project_name, "wp7"))
+      df$title <- "WP7: Data integration and systems biology"
+    })
 
+
+    ## Reactive plots titles ----
+    output$title_text <- renderUI({
+      req(df)
+      p(class = "header-text", df$title)
+    })
 
     ## Summary Plots ----
     output$file_info <- plotly::renderPlotly({

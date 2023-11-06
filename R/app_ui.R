@@ -45,12 +45,6 @@ app_ui <- function(request) {
         icon = bsicons::bs_icon("house-fill", size = "1em"),
         mod_home_ui("home_1")
       ),
-      # bslib::nav_panel(
-      #   value = "explore_tab",
-      #   title = "Explore",
-      #   icon = bsicons::bs_icon("bar-chart-line-fill", size = "1em"),
-      #   mod_explore_ui("explore_1")
-      # ),
       bslib::nav_panel(
         value = "explore_tab",
         title = "Explore",

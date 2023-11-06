@@ -70,7 +70,8 @@ chr_sliderinput_2 <- function(df, col, ns, title = NULL) {
   var <- df %>% dplyr::pull(col) %>% unique()
 
   if (!(is.character(var) | is.factor(var))) {
-    rlang::abort("col must be character or factor")
+    rlang::inform(glue::glue("col must be character or factor: {col}"))
+    var <- as.factor(var)
   }
 
   if (is.null(title)) {
@@ -286,8 +287,6 @@ pie_plt_2 <- function(df,
       )
     )
 
-  highcharter::renderHighchart({
-
     df %>%
       dplyr::group_by(!!dplyr::sym(group_var)) %>%
       dplyr::summarise(n = !!dplyr::sym(count_var) %>% unique() %>% length()) %>%
@@ -303,7 +302,6 @@ pie_plt_2 <- function(df,
           )
         )
       ))
-  })
 }
 
 

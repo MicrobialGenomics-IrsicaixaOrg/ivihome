@@ -52,8 +52,8 @@ stat_box <- function(title, value, icon, icon_size = "4em", opacity = 0.8, class
     column(
       width = 3,
       align = "center",
-      h2(class = "stat_value", value, style = "color: var(--purple-dark);"),
-      h4(class = "stat_title", title)
+      h2(class = "stat-text-1", value, style = "color: var(--purple-dark);"),
+      h4(class = "stat-text-2", title)
     )
   )
 }

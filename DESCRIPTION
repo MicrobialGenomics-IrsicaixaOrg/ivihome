@@ -19,6 +19,7 @@ Imports:
     DT,
     glue,
     golem (>= 0.4.1),
+    gt,
     highcharter,
     magrittr,
     plotly,

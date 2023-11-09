@@ -292,6 +292,108 @@
     --bs-btn-hover-border-color: 0 !important;
 }
 
+/* =========================== */
+/*    PROJECT DESCRIPTIONS     */
+/* =========================== */
+
+#project-description h1 {
+  margin: 5vh auto;
+}
+
+#project-description h2 {
+  text-align: center;
+  margin: 5vh auto;
+  width: 60vw;
+  color: var(--purple-dark);
+  font-weight: 500;
+}
+
+.bslib-card {
+}
+
+#project_adv4_1-project_description {
+  grid-area: project_description;
+}
+#project_adv4_1-contact_info {
+  grid-area: contact_info;
+}
+#project_adv4_1-publications {
+  grid-area: publications;
+}
+#project_adv4_1-contributors {
+  grid-area: contributors;
+}
+#project_adv4_1-collaborating_institutions {
+  grid-area: collaborating_institutions;
+}
+#project_adv4_1-data_curators {
+  grid-area: data_curators;
+}
+#project_adv4_1-project_downloads {
+  grid-area: project_downloads;
+}
+#project_adv4_1-project_details {
+  grid-area: project_details;
+}
+#project_adv4_1-file_counts {
+  grid-area: file_counts;
+}
+#project_adv4_1-accessions {
+  grid-area: accessions;
+}
+#project_adv4_1-release_policy {
+  grid-area: release_policy;
+}
+
+.content-project-container {
+  margin: auto 10vw;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(10, 150px);
+  grid-column-gap: 5vw;
+  grid-row-gap: 5vh;
+  grid-template-areas:
+     "project_description project_downloads"
+     "project_description project_details"
+     "contributors project_details"
+     "contributors file_counts"
+     "contact_info data_curators"
+     "publications accessions"
+     "release_policy release_policy"
+     "collaborating_institutions collaborating_institutions"
+     "collaborating_institutions collaborating_institutions"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -30,7 +30,7 @@ mod_explor_ui <- function(id) {
       actionButton(
         inputId = ns("reset_input"),
         "Reset Filters",
-        width = "10%",
+        width = "15%",
         align = "right",
         style = "background-color: #aa2b8b; color: #fff; border-color: #aa2b8b;"
       ),

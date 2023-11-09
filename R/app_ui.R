@@ -36,6 +36,7 @@ app_ui <- function(request) {
         ), ""
       ),
       theme = bslib::bs_theme(
+        version = 5,
         bootswatch = "minty",
         base_font = bslib::font_google("Arvo")
       ),
@@ -51,10 +52,27 @@ app_ui <- function(request) {
         icon = bsicons::bs_icon("bar-chart-line-fill", size = "1em"),
         mod_explor_ui("explor_1")
       ),
+      bslib::nav_panel(
+        value = "protocols_tab",
+        title = "Protocols",
+        icon = bsicons::bs_icon("file-earmark-text-fill", size = "1em")
+      ),
+      bslib::nav_panel(
+        value = "pipelines_tab",
+        title = "Pipelines",
+        icon = icon("diagram-project", size = "1em"),
+      ),
       bslib::nav_panel_hidden(
         value = "tab_ADZ4",
         mod_project_adv4_ui("project_adv4_1")
       ),
+
+      # bslib::nav_panel(
+      #   value = "project_tab",
+      #   title = "Project",
+      #   icon = bsicons::bs_icon("folder-fill", size = "1em"),
+      #   mod_project_adv4_ui("project_adv4_1")
+      # ),
       bslib::nav_panel_hidden(
         value = "tab_ADZ2",
         "ADZ2 tab"

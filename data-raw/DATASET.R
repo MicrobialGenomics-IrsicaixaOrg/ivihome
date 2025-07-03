@@ -30,4 +30,4 @@ full_data <-
     df
   })
 
-usethis::use_data(full_data, overwrite = TRUE, internal = TRUE )
+usethis::use_data(full_data, overwrite = TRUE, internal = TRUE)

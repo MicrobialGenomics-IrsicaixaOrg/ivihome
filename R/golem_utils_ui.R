@@ -9,6 +9,7 @@
 #' @examples
 #' list_to_li(c("a", "b"))
 #' @importFrom shiny tags tagAppendAttributes tagList
+#' @autoglobal
 list_to_li <- function(list, class = NULL) {
   if (is.null(class)) {
     tagList(
@@ -45,7 +46,7 @@ list_to_li <- function(list, class = NULL) {
 #' @examples
 #' list_to_p(c("This is the first paragraph", "this is the second paragraph"))
 #' @importFrom shiny tags tagAppendAttributes tagList
-#'
+#' @autoglobal
 list_to_p <- function(list, class = NULL) {
   if (is.null(class)) {
     tagList(
@@ -73,6 +74,7 @@ list_to_p <- function(list, class = NULL) {
 }
 
 #' @importFrom shiny tags tagAppendAttributes tagList
+#' @autoglobal
 named_to_li <- function(list, class = NULL) {
   if (is.null(class)) {
     res <- mapply(
@@ -121,6 +123,7 @@ named_to_li <- function(list, class = NULL) {
 #'
 #' @return a new tag
 #' @noRd
+#' @autoglobal
 #'
 #' @examples
 #' a <- shiny::tags$p(src = "plop", "pouet")
@@ -139,6 +142,7 @@ tagRemoveAttributes <- function(tag, ...) {
 #'
 #' @return a tag
 #' @noRd
+#' @autoglobal
 #'
 #' @examples
 #' ## Hide
@@ -164,6 +168,7 @@ undisplay <- function(tag) {
 }
 
 #' @importFrom shiny tagList
+#' @autoglobal
 display <- function(tag) {
   if (
     !is.null(tag$attribs$style) &&
@@ -185,6 +190,7 @@ display <- function(tag) {
 #' @noRd
 #'
 #' @importFrom shiny tags
+#' @autoglobal
 jq_hide <- function(id) {
   tags$script(sprintf("$('#%s').hide()", id))
 }
@@ -202,6 +208,7 @@ jq_hide <- function(id) {
 #' @examples
 #' with_red_star("Enter your name here")
 #' @importFrom shiny tags HTML
+#' @autoglobal
 with_red_star <- function(text) {
   shiny::tags$span(
     HTML(
@@ -228,6 +235,7 @@ with_red_star <- function(text) {
 #' @examples
 #' rep_br(5)
 #' @importFrom shiny HTML
+#' @autoglobal
 rep_br <- function(times = 1) {
   HTML(rep("<br/>", times = times))
 }
@@ -243,6 +251,7 @@ rep_br <- function(times = 1) {
 #' @examples
 #' enurl("https://www.thinkr.fr", "ThinkR")
 #' @importFrom shiny tags
+#' @autoglobal
 enurl <- function(url, text) {
   tags$a(href = url, text)
 }
@@ -255,45 +264,53 @@ enurl <- function(url, text) {
 #' @noRd
 #'
 #' @importFrom shiny column
+#' @autoglobal
 col_12 <- function(...) {
   column(12, ...)
 }
 
 #' @importFrom shiny column
+#' @autoglobal
 col_10 <- function(...) {
   column(10, ...)
 }
 
 #' @importFrom shiny column
+#' @autoglobal
 col_8 <- function(...) {
   column(8, ...)
 }
 
 #' @importFrom shiny column
+#' @autoglobal
 col_6 <- function(...) {
   column(6, ...)
 }
 
 
 #' @importFrom shiny column
+#' @autoglobal
 col_4 <- function(...) {
   column(4, ...)
 }
 
 
 #' @importFrom shiny column
+#' @autoglobal
 col_3 <- function(...) {
   column(3, ...)
 }
 
 
 #' @importFrom shiny column
+#' @autoglobal
 col_2 <- function(...) {
   column(2, ...)
 }
 
 
 #' @importFrom shiny column
+#' @autoglobal
 col_1 <- function(...) {
   column(1, ...)
 }
@@ -310,6 +327,7 @@ col_1 <- function(...) {
 #'
 #' @return The modified tag with an extra id and the action button class.
 #' @noRd
+#' @autoglobal
 #'
 #' @examples
 #' if (interactive()) {

@@ -7,6 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
+#' @autoglobal
 mod_exploration_ui <- function(id) {
   ns <- NS(id)
   bslib::page(
@@ -71,13 +72,15 @@ mod_exploration_ui <- function(id) {
 #' exploration Server Functions
 #'
 #' @noRd
+#' @autoglobal
 mod_exploration_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
     ## Fake data ----
     full_data <-
-      readRDS("inst/test_data/test_data.rds") %>%
+      system.file("extdata", "test_data.rds", package = "ivihome") %>%
+      readRDS() %>%
       dplyr::mutate(
         birth_date = lubridate::ymd(birth_date),
         age = lubridate::as.period(lubridate::interval(birth_date, lubridate::today()))@year,

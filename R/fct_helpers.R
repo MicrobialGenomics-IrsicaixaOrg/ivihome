@@ -18,6 +18,7 @@
 #'
 #' @seealso \code{\link{levels}}, \code{\link{factor}}
 #' @noRd
+#' @autoglobal
 #' @examples
 #' data <- data.frame(Gender = c("Male", "Female", "Male", "Female"))
 #' extract_var_levels(data, "Gender")
@@ -44,6 +45,7 @@ extract_var_levels <- function(df, var_name) {
 #'
 #' @return A data frame with the specified column transformed into a human-readable format with units.
 #' @noRd
+#' @autoglobal
 #'
 #' @examples
 #' df <- data.frame(size = c(1500, 500000, 12000000, 5000000000))
@@ -74,6 +76,8 @@ transform_units <- function(df, col) {
 #' @return A Shiny UI element containing a slider input for selecting
 #'   categories.
 #' @noRd
+#' @autoglobal
+#'
 #' @examples
 #' # Assuming "data" is a data frame containing a column named "Category"
 #' ns <- NS("my_app")
@@ -121,6 +125,8 @@ chr_sliderinput <- function(df, col, ns, title = NULL) {
 #' @return A Shiny UI element containing a slider range input for selecting
 #'   numeric range.
 #' @noRd
+#' @autoglobal
+#'
 #' @examples
 #' # Assuming "data" is a data frame containing a column named "Age"
 #' ns <- NS("my_app")
@@ -144,7 +150,7 @@ num_sliderrange <- function(df, col, ns, title = NULL) {
     h6(title, align = "center"),
     shiny::hr(),
     shiny::br(),
-    shinyWidgets::setSliderColor(color = "#999999", sliderId = 1),
+    # shinyWidgets::setSliderColor(color = "#999999", sliderId = 1),
     sliderInput(
       inputId = ns(col),
       label = NULL,
@@ -172,8 +178,8 @@ num_sliderrange <- function(df, col, ns, title = NULL) {
 #'   Should be either "remainder" or "total".
 #'
 #' @return A Plotly sunburst plot.
-#' @seealso \code{\link{plot_ly}}, \code{\link{sunburst}}
 #' @export
+#' @autoglobal
 sunburst_plt <- function(df,
                          vars,
                          max_depth = Inf,

@@ -12,24 +12,31 @@ BugReports:
 Imports: 
     bslib,
     config (>= 0.3.1),
+    data.table,
     dplyr,
     DT,
-    formattable,
     glue,
     golem (>= 0.4.1),
+    lubridate,
     magrittr,
+    plotly,
+    purrr,
     rlang,
     shiny (>= 1.7.4.1),
     shinyjs,
     shinyWidgets,
-    stringi,
     stringr,
-    tibble
+    tidyr
 Suggests: 
+    roxyglobals,
     spelling,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
+Roxygen: list(roclets = c("collate", "namespace", "rd",
+    "roxyglobals::global_roclet"))
+Config/roxyglobals/filename: globals.R
+Config/roxyglobals/unique: FALSE

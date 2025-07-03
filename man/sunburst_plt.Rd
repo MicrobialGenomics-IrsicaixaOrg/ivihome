@@ -28,6 +28,3 @@ A Plotly sunburst plot.
 This function generates a sunburst plot using the Plotly library, based on
 the provided data frame and variables.
 }
-\seealso{
-\code{\link{plot_ly}}, \code{\link{sunburst}}
-}

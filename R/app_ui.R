@@ -4,6 +4,7 @@
 #'     DO NOT REMOVE.
 #' @import shiny
 #' @noRd
+#' @autoglobal
 app_ui <- function(request) {
   link_github <- tags$a(
     shiny::icon("github"),
@@ -52,6 +53,7 @@ app_ui <- function(request) {
 #' @import shiny
 #' @importFrom golem add_resource_path activate_js favicon bundle_resources
 #' @noRd
+#' @autoglobal
 golem_add_external_resources <- function() {
   add_resource_path("www",
                     app_sys("app/www"))

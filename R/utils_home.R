@@ -8,6 +8,8 @@
 #'
 #' @return A character vector with the compact representation of the input number.
 #' @noRd
+#' @autoglobal
+#'
 #' @examples
 #' si_number(1500) # Returns "1.50k"
 #' si_number(2500000) # Returns "2.50M"
@@ -37,6 +39,7 @@ si_number <- function(x, digits = 3) {
 #' @return A tag containing the styled stat box.
 #'
 #' @export
+#' @autoglobal
 stat_box <- function(title, value, icon, icon_size = "4em", opacity = 0.8, class = "stats-box") {
   fixedRow(
     class = "stats-box",
@@ -78,6 +81,7 @@ stat_box <- function(title, value, icon, icon_size = "4em", opacity = 0.8, class
 #'
 #' @return A Plotly sunburst plot.
 #' @export
+#' @autoglobal
 sunburst_plt <- function(df,
                          vars,
                          max_depth = Inf,
@@ -128,6 +132,7 @@ sunburst_plt <- function(df,
 #' @param ns The namespace for Shiny.
 #'
 #' @return A Shiny UI element representing the customized button.
+#' @autoglobal
 wp_button <- function(id, lab, ns) {
   div(
     class = "wp-button",
@@ -163,6 +168,7 @@ wp_button <- function(id, lab, ns) {
 #'
 #' @return A Plotly bar plot visualizing the number of donors per experiment type.
 #' @export
+#' @autoglobal
 donors_by_exp_plt <- function(df, source_id) {
   df <-
     dplyr::group_by(df, experiment_type_id) %>%

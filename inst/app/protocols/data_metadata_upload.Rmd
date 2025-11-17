@@ -1,0 +1,38 @@
+---
+title: "Metadata Harmonisation and Upload to the Portal"
+category: "Data Management"
+summary: "Checklist-driven process to standardise participant- and sample-level metadata before ingesting it into the MISTRAL Data Portal."
+duration: "45-60 minutes"
+owner: "Data Coordination Centre"
+---
+
+## Purpose
+
+Ensure metadata entering the portal is consistent across sites and linked to laboratory artefacts using validated identifiers.
+
+## Inputs
+
+- Site export of participant and sample metadata (CSV or XLSX)
+- Validated controlled vocabulary tables from the portal (disease, tissue, sequencing method)
+- Submission template file (v1.3 or later)
+
+## Procedure
+
+1. **Template selection**: Download the latest submission template from the portal resources page.
+2. **Map columns**: Align site variable names to template headers; document any local fields not captured.
+3. **Validate vocabularies**: Cross-check categorical fields against controlled vocab tables; replace site-specific strings (e.g., "stool", "feces") with portal values ("Stool").
+4. **Check identifiers**: Confirm uniqueness of `project_id`, `patient_id`, and `aliquot_id` columns; regenerate if duplicates exist.
+5. **Date handling**: Convert all dates to ISO 8601 (YYYY-MM-DD); ensure time zones are specified for collection timestamps.
+6. **File linkage**: Verify each sequencing file referenced has a matching `aliquot_id` in the sample tab.
+7. **QC preview**: Run the template through the portal's dry-run validator (CLI or UI) and review warnings.
+8. **Upload**: Submit via the portal upload form; attach a short changelog describing edits since the last submission.
+
+## Acceptance Criteria
+
+- No duplicated IDs or missing required fields after validation.
+- Controlled vocabulary terms match portal reference tables exactly.
+- Changelog attached and stored alongside the submission archive.
+
+## Handover
+
+Archive the final template, reference vocab tables, and validator report in the shared drive (`/data/mistral/submissions/<date>`). Notify the data steward for review.

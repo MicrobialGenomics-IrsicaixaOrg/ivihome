@@ -7,5 +7,6 @@
 app_server <- function(input, output, session) {
   mod_home_server("home_1", session)
   mod_explor_server("explor_1", session)
+  mod_protocols_server("protocols_1", session)
   mod_project_adv4_server("project_adv4_1", session)
 }

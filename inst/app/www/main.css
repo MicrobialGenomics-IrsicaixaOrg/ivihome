@@ -397,3 +397,75 @@
 
 
 
+
+/* Protocols section */
+.protocols-page {
+  margin-top: 10px;
+}
+
+.protocols-filter-card, .protocols-detail-card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border: none;
+}
+
+.protocols-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.protocol-card {
+  border: 1px solid #e9e9e9;
+}
+
+.protocol-title {
+  font-weight: 700;
+  color: #aa2b8b;
+  margin-bottom: 4px;
+}
+
+.protocol-summary {
+  color: #444;
+  min-height: 42px;
+}
+
+.protocol-badge {
+  display: inline-block;
+  background: #e7f5ff;
+  color: #0a6ebd;
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.protocol-pill {
+  display: inline-block;
+  background: #f8e7f3;
+  color: #aa2b8b;
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.protocol-owner {
+  color: #555;
+}
+
+.protocol-meta-bar {
+  padding: 6px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.protocol-read-link {
+  font-weight: 600;
+  color: #aa2b8b;
+}
+
+.protocol-body {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 16px;
+}

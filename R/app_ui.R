@@ -55,7 +55,8 @@ app_ui <- function(request) {
       bslib::nav_panel(
         value = "protocols_tab",
         title = "Protocols",
-        icon = bsicons::bs_icon("file-earmark-text-fill", size = "1em")
+        icon = bsicons::bs_icon("file-earmark-text-fill", size = "1em"),
+        mod_protocols_ui("protocols_1")
       ),
       bslib::nav_panel(
         value = "pipelines_tab",

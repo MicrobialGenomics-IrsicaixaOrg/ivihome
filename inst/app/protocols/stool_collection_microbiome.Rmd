@@ -1,0 +1,46 @@
+---
+title: "Stool Collection and Preservation for Microbiome Analysis"
+category: "Sample Processing"
+summary: "Field-friendly stool collection workflow that stabilises microbial signal prior to sequencing."
+duration: "60-90 minutes"
+owner: "MISTRAL Core Lab"
+---
+
+## Purpose
+
+Provide a reproducible workflow to collect, stabilize, and log stool samples destined for metagenomic and 16S sequencing within MISTRAL studies.
+
+## Materials
+
+- Labeled stool collection kits with leak-proof tubes and spooned caps
+- DNA/RNA Shield or equivalent stabilization buffer (2 mL per tube)
+- Nitrile gloves, absorbent bench pads, and biohazard bags
+- Pre-printed barcode stickers linked to study IDs
+- Cool box with ice packs for transport to processing lab
+
+## Preparation
+
+1. Verify kit inventory and barcode range against the participant list.
+2. Pre-fill tubes with stabilization buffer; record batch and expiration dates.
+3. Prepare a simple instruction card in the participant language.
+
+## Procedure
+
+1. **Brief participant** on kit use and expected sample size (approx. 5 g).
+2. Participant transfers a small scoop of stool into the tube, closes securely, and inverts 10 times to mix with buffer.
+3. Affix barcode to tube and brochure; photograph barcode for audit trail if possible.
+4. Place tube into biohazard bag with absorbent pad; log time of collection.
+5. Store at ambient temperature for up to 24 h or in a cool box if ambient > 28 C.
+6. Transfer to processing lab and move samples to -20 C; avoid repeated freeze-thaw cycles.
+
+## Quality Checks
+
+- Tube integrity (no leaks, cap seated) verified on arrival.
+- Visual check for buffer-to-stool ratio (~1:1). If insufficient stool, flag for recollection.
+- Confirm barcode matches electronic case report form entry.
+
+## Deliverables
+
+- Intake log with timestamps, barcode, participant ID, and collector initials.
+- Box map for frozen storage locations (rack, column, position).
+- Chain-of-custody document for shipments to sequencing centre.

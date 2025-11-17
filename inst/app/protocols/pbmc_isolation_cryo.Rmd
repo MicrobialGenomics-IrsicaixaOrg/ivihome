@@ -1,0 +1,42 @@
+---
+title: "PBMC Isolation and Cryopreservation for Immune Profiling"
+category: "Cellular Assays"
+summary: "Density-gradient isolation of PBMCs from whole blood with downstream cryostorage for flow cytometry and single-cell assays."
+duration: "2-3 hours"
+owner: "Clinical Immunology Unit"
+---
+
+## Purpose
+
+Generate high-viability PBMC aliquots suitable for multiplex immunophenotyping and paired virology readouts.
+
+## Materials
+
+- Fresh EDTA whole blood (processed within 6 h of draw)
+- Ficoll-Paque PLUS or equivalent density medium
+- 50 mL conical tubes, swinging-bucket centrifuge
+- PBS without calcium/magnesium, cell counter, Trypan Blue
+- Cryovials, freezing container (Mr. Frosty or equivalent), liquid nitrogen storage
+- Freezing media: 90% heat-inactivated FBS + 10% DMSO
+
+## Procedure
+
+1. **Dilution**: Mix whole blood 1:1 with room-temperature PBS.
+2. **Layering**: Gently layer 15 mL diluted blood over 15 mL Ficoll in a 50 mL tube without disturbing the interface.
+3. **Centrifuge**: 400 x g for 30 min, brake off, 20 C.
+4. **Harvest**: Collect the buffy coat interface with a sterile pipette into a new tube.
+5. **Wash**: Bring volume to 50 mL with PBS and spin at 300 x g for 10 min with low brake; repeat wash once.
+6. **Count cells** using Trypan Blue; record total and viability.
+7. **Resuspend** at 10 million cells/mL in freezing media.
+8. **Aliquot** 1 mL per cryovial, place in controlled-rate freezing container, and store at -80 C for 24 h.
+9. **Transfer** to liquid nitrogen vapour phase; update storage inventory.
+
+## Quality Checks
+
+- Viability after isolation > 90%; if lower, log deviation and note processing time.
+- Lot numbers for Ficoll, FBS, and DMSO recorded in batch sheet.
+- Parallel blank tube processed monthly to monitor for environmental contamination.
+
+## Downstream Notes
+
+Thaw rapidly at 37 C, dilute dropwise into pre-warmed RPMI + 10% FBS, and rest 1 h prior to antigen stimulation or staining.

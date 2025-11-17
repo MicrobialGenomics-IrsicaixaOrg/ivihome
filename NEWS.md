@@ -1,3 +1,3 @@
-# mistralDP (development version)
+# ivihome (development version)
 
 * Initial CRAN submission.

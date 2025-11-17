@@ -1,5 +1,5 @@
 default:
-  golem_name: mistralDP
+  golem_name: ivihome
   golem_version: 0.0.0.9000
   app_prod: no
 production:

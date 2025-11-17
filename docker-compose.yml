@@ -1,0 +1,42 @@
+services:
+
+  traefik:
+    image: traefik:v2.10.7
+    command:
+      - --providers.docker=true
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.http.redirections.entryPoint.to=websecure
+      - --entrypoints.web.http.redirections.entryPoint.scheme=https
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.le.acme.tlschallenge=true
+      - --certificatesresolvers.le.acme.email=bioinfogem@irsicaixa.es
+      - --certificatesresolvers.le.acme.storage=/letsencrypt/acme.json
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/letsencrypt/acme.json:/letsencrypt/acme.json
+
+  shiny_apps:
+    image: index.docker.io/microbialgenomics/mistraldp:latest
+    ports:
+      - "3838"
+    volumes:
+      - /home/ubuntu/ivihome/shiny_logs/:/var/log/shiny-server/
+      - /home/ubuntu/ivihome/user_logs:/srv/shiny-server/logs
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.shiny.rule=Host(`ivihome.eu`) || Host(`www.ivihome.eu`)"
+      - "traefik.http.routers.shiny.entrypoints=websecure"
+      - "traefik.http.routers.shiny.tls=true"
+      - "traefik.http.routers.shiny.tls.certresolver=le"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.shiny.middlewares=redirect-to-https"
+      - "traefik.http.services.shiny.loadbalancer.server.port=3838"
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 10
